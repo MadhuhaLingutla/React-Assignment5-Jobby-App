@@ -1,0 +1,41 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: 'Roboto';
+}
+
+.jobs-container {
+  height: 100vh;
+}
+.jobs-content-container {
+  background-color: black;
+  height: 89vh;
+  padding-left: 70px;
+  padding-right: 70px;
+  display: flex;
+}
+.left-container {
+  width: 300px;
+  flex-shrink: 0;
+}
+.right-container {
+}
+
+.retry-button {
+  background-color: #4f46e5;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  font-weight: bold;
+}
+
+.profile-details-container {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
