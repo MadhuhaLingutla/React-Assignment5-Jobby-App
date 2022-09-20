@@ -17,8 +17,12 @@
 .left-container {
   width: 300px;
   flex-shrink: 0;
+  margin-right: 40px;
 }
 .right-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .retry-button {
@@ -38,4 +42,40 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.search-bar {
+  background-color: transparent;
+  border: 1px solid #475569;
+  width: 350px;
+  height: 40px;
+  border-radius: 5px;
+  outline: none;
+}
+.jobs-display-container {
+  flex-grow: 1;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.failure-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.failure-image {
+  border: none;
+  margin-bottom: 40px;
+}
+.failure-view-heading {
+  margin-bottom: 20px;
+}
+.failure-view-description {
+  color: #475569;
+  font-size: 15px;
+  margin-bottom: 10px;
 }
