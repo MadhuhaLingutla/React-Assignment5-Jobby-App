@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
+import {AiOutlineSearch} from 'react-icons/ai'
 
 import Header from '../Header'
 import UserProfile from '../UserProfile'
@@ -290,12 +291,18 @@ class Jobs extends Component {
             </div>
           </div>
           <div className="right-container">
-            <input
-              type="search"
-              className="search-bar"
-              onChange={this.updateSearchInput}
-              onKeyDown={this.sendSearchInput}
-            />
+            <div className="search-bar-container">
+              <input
+                type="search"
+                className="search-bar"
+                onChange={this.updateSearchInput}
+                onKeyDown={this.sendSearchInput}
+                placeholder="Search"
+              />
+              <div className="search-icon-container">
+                <AiOutlineSearch className="search-icon" />
+              </div>
+            </div>
             <div className="jobs-display-container">
               {this.jobsViewDecisionMaker()}
             </div>

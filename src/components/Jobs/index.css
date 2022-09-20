@@ -45,14 +45,45 @@
   align-items: center;
 }
 
+.search-bar-container {
+  height: 40px;
+  display: flex;
+  border: 1px solid #475569;
+  border-radius: 5px;
+  align-self: flex-start;
+}
+
+.search-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #272727;
+  padding-top: 5px;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 5px;
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.search-icon {
+  display: block;
+  width: 30px;
+  height: 100%;
+  color: #f1f5f9;
+}
+
 .search-bar {
   background-color: transparent;
-  border: 1px solid #475569;
+  font-size: 15px;
   width: 350px;
   height: 40px;
-  border-radius: 5px;
+  border: none;
   outline: none;
   margin-bottom: 20px;
+  padding-left: 10px;
+  display: block;
 }
 .jobs-display-container {
   flex-grow: 1;
