@@ -239,7 +239,9 @@ class Jobs extends Component {
     }
     return (
       <div className="jobs-list">
-        <JobItem />
+        {jobsData.map(each => (
+          <JobItem jobItem={each} key={each.id} />
+        ))}
       </div>
     )
   }

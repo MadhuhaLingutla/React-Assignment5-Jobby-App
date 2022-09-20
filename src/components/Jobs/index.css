@@ -5,14 +5,15 @@
 }
 
 .jobs-container {
-  height: 100vh;
+  height: 100%;
 }
 .jobs-content-container {
   background-color: black;
-  height: 89vh;
+  height: 100%;
   padding-left: 70px;
   padding-right: 70px;
   display: flex;
+  padding-top: 40px;
 }
 .left-container {
   width: 300px;
@@ -51,14 +52,10 @@
   height: 40px;
   border-radius: 5px;
   outline: none;
+  margin-bottom: 20px;
 }
 .jobs-display-container {
   flex-grow: 1;
-  border: 1px solid red;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .failure-view {
@@ -78,4 +75,8 @@
   color: #475569;
   font-size: 15px;
   margin-bottom: 10px;
+}
+
+.jobs-list {
+  list-style: none;
 }

@@ -104,7 +104,9 @@ class LoginForm extends Component {
           />
           {this.renderUsernameField()}
           {this.renderPasswordField()}
-          <button className="login-button">Login</button>
+          <button className="login-button" type="submit">
+            Login
+          </button>
           {showSubmitError && <p className="error-msg">*{errorMsg}</p>}
         </form>
       </div>
