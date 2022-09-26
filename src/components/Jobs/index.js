@@ -149,7 +149,7 @@ class Jobs extends Component {
   }
 
   loadingView = () => (
-    <div className="products-loader-container" testid="loader">
+    <div className="products-loader-container">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )
@@ -266,7 +266,7 @@ class Jobs extends Component {
     this.setState({searchInput: event.target.value})
   }
 
-  sendSearchInput = event => {
+  sendSearchInput = () => {
     this.getJobsData()
   }
 
@@ -299,7 +299,6 @@ class Jobs extends Component {
               <button
                 className="search-icon-container"
                 type="button"
-                testid="searchButton"
                 onClick={this.sendSearchInput}
               >
                 <AiOutlineSearch className="search-icon" />

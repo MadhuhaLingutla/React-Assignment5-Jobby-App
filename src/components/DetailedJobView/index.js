@@ -1,5 +1,4 @@
 import {Component} from 'react'
-import {Link} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
 import {AiFillStar} from 'react-icons/ai'
@@ -93,7 +92,7 @@ class DetailedJobView extends Component {
   }
 
   loadingView = () => (
-    <div className="products-loader-container" testid="loader">
+    <div className="products-loader-container">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )
@@ -148,7 +147,7 @@ class DetailedJobView extends Component {
           <div className="description-heading-container">
             <h1 className="description-heading-detailed-view">Description</h1>
             <div className="visit-container">
-              <a href={companyWebsiteUrl} className="link-item">
+              <a href={companyWebsiteUrl} className="visit-container">
                 <p className="visit-text">Visit</p>
                 <BiLinkExternal className="visit-icon" />
               </a>
