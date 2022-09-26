@@ -149,7 +149,7 @@ class Jobs extends Component {
   }
 
   loadingView = () => (
-    <div className="products-loader-container">
+    <div className="products-loader-container" testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )
@@ -219,7 +219,7 @@ class Jobs extends Component {
         alt="failure view"
         className="failure-image"
       />
-      <h1 className="failure-view-heading">Oops!Something Went Wrong</h1>
+      <h1 className="failure-view-heading">Oops! Something Went Wrong</h1>
       <p className="failure-view-description">
         We cannot seem to find the page you are looking for.
       </p>
@@ -267,9 +267,7 @@ class Jobs extends Component {
   }
 
   sendSearchInput = event => {
-    if (event.key === 'Enter') {
-      this.getJobsData()
-    }
+    this.getJobsData()
   }
 
   render() {
@@ -296,12 +294,16 @@ class Jobs extends Component {
                 type="search"
                 className="search-bar"
                 onChange={this.updateSearchInput}
-                onKeyDown={this.sendSearchInput}
                 placeholder="Search"
               />
-              <div className="search-icon-container">
+              <button
+                className="search-icon-container"
+                type="button"
+                testid="searchButton"
+                onClick={this.sendSearchInput}
+              >
                 <AiOutlineSearch className="search-icon" />
-              </div>
+              </button>
             </div>
             <div className="jobs-display-container">
               {this.jobsViewDecisionMaker()}

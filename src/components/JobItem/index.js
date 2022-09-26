@@ -50,7 +50,7 @@ const JobItem = props => {
           <p className="salary">{packagePerAnnum}</p>
         </div>
         <div className="description-container">
-          <p className="description-heading">Description</p>
+          <h1 className="description-heading">Description</h1>
           <p className="description-content">{jobDescription}</p>
         </div>
       </Link>

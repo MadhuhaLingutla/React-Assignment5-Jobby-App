@@ -87,11 +87,13 @@ class DetailedJobView extends Component {
         similarJobDetails: similarJobsFormatedData,
         apiStatus: apiStatusList.success,
       })
+    } else {
+      this.setState({apiStatus: apiStatusList.failed})
     }
   }
 
   loadingView = () => (
-    <div className="products-loader-container">
+    <div className="products-loader-container" testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )
@@ -103,7 +105,6 @@ class DetailedJobView extends Component {
       companyLogoUrl,
       companyWebsiteUrl,
       employmentType,
-      id,
       jobDescription,
       lifeAtCompanyDescription,
       lifeAtCompanyImageUrl,
@@ -119,7 +120,7 @@ class DetailedJobView extends Component {
         <div className="title-container">
           <img
             src={companyLogoUrl}
-            alt="company logo"
+            alt="job details company logo"
             className="jobs-company-logo"
           />
           <div className="heading-rating">
@@ -145,12 +146,12 @@ class DetailedJobView extends Component {
         </div>
         <div className="description-container">
           <div className="description-heading-container">
-            <p className="description-heading-detailed-view">Description</p>
+            <h1 className="description-heading-detailed-view">Description</h1>
             <div className="visit-container">
-              <p className="visit-text">Visit</p>
-              <Link to={companyWebsiteUrl} className="link-item">
+              <a href={companyWebsiteUrl} className="link-item">
+                <p className="visit-text">Visit</p>
                 <BiLinkExternal className="visit-icon" />
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -160,17 +161,17 @@ class DetailedJobView extends Component {
         </div>
         <div className="skills-container">
           <h2 className="skills-heading">Skills</h2>
-          <div className="skills-list">
+          <ul className="skills-list">
             {skills.map(each => {
               const {imageUrl, name} = each
               return (
-                <div className="skill">
+                <li className="skill" key={name}>
                   <img className="skill-image" src={imageUrl} alt={name} />
                   <p className="skill-name">{name}</p>
-                </div>
+                </li>
               )
             })}
-          </div>
+          </ul>
         </div>
         <div className="life-at-company-container">
           <h2 className="life-at-company-heading">Life at Company</h2>
@@ -191,8 +192,85 @@ class DetailedJobView extends Component {
 
   similarJobsDisplay = () => {
     const {similarJobDetails} = this.state
-    return <div className="similar-jobs-view">Similar Jobs View View</div>
+    console.log('Similar Job Details', similarJobDetails)
+    return (
+      <div className="similar-jobs-container">
+        <h1 className="similar-jobs-heading">Similar Jobs</h1>
+        <ul className="similar-jobs-list">
+          {similarJobDetails.map(each => {
+            const {
+              companyLogoUrl,
+              employmentType,
+              id,
+              jobDescription,
+              location,
+              rating,
+              title,
+            } = each
+            return (
+              <li className="similar-job-item" key={id}>
+                <div className="title-container">
+                  <img
+                    src={companyLogoUrl}
+                    alt="similar job company logo"
+                    className="jobs-company-logo"
+                  />
+                  <div className="heading-rating">
+                    <h1 className="company-name">{title}</h1>
+                    <div className="rating-container">
+                      <AiFillStar className="rating-icon" />
+                      <p className="rating">{rating}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="description-container">
+                  <h1 className="description-heading">Description</h1>
+                  <p className="description-content">{jobDescription}</p>
+                </div>
+                <div className="details-container similar-job-details-container">
+                  <div className="sub-details">
+                    <div className="detail1-container">
+                      <IoLocationSharp className="detail1-icon" />
+                      <p className="detail1-text">{location}</p>
+                    </div>
+                    <div className="detail1-container">
+                      <IoBagCheck className="detail1-icon" />
+                      <p className="detail1-text">{employmentType}</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+    )
   }
+
+  retryJobsDetailsData = () => {
+    this.getJobDetails()
+  }
+
+  jobDetailsFailureView = () => (
+    <div className="failure-view">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
+        alt="failure view"
+        className="failure-image"
+      />
+      <h1 className="failure-view-heading">Oops!Something Went Wrong</h1>
+      <p className="failure-view-description">
+        We cannot seem to find the page you are looking for.
+      </p>
+      <button
+        className="retry-button"
+        type="button"
+        onClick={this.retryJobsDetailsData}
+      >
+        Retry
+      </button>
+    </div>
+  )
 
   jobDetailsViewDecisionMaker = () => {
     console.log('Entering into Decision Maker')
@@ -208,6 +286,8 @@ class DetailedJobView extends Component {
         )
       case apiStatusList.inProgress:
         return this.loadingView()
+      case apiStatusList.failed:
+        return this.jobDetailsFailureView()
       default:
         return null
     }

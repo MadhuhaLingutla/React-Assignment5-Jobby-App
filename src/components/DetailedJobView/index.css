@@ -66,6 +66,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  list-style: none;
 }
 .skill {
   display: flex;
@@ -100,4 +101,28 @@
   border-radius: 5px;
   width: 400px;
   height: 250px;
+}
+
+.similar-jobs-container {
+}
+.similar-jobs-heading {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+.similar-jobs-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.similar-job-item {
+  background-color: #272727;
+  border-radius: 10px;
+  width: 32%;
+  padding: 30px;
+}
+
+.similar-job-details-container {
+  border-bottom: none;
+  margin-top: 40px;
 }
