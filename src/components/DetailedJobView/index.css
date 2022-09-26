@@ -1,0 +1,12 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Roboto';
+}
+
+.detailed-job-view-container {
+}
+.job-details-responsive-container {
+  background-color: black;
+  height: 100vh;
+}

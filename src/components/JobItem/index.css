@@ -79,3 +79,7 @@
   color: #f1f5f9;
   line-height: 1.6;
 }
+
+.link-item {
+  text-decoration: none;
+}

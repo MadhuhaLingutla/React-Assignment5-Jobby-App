@@ -20,14 +20,16 @@
 .filter-item {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  margin-bottom: 15px;
 }
-.input-field {
+.input-filter-field {
   width: 15px;
   height: 15px;
   margin-right: 10px;
   border: none;
 }
-.input-label {
+.input-filter-label {
   font-size: 15px;
 }
 

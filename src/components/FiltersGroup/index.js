@@ -22,11 +22,14 @@ const FiltersGroup = props => {
                 <input
                   type="checkbox"
                   id={employmentTypeId}
-                  className="input-field"
+                  className="input-filter-field"
                   value={employmentTypeId}
                   onChange={onClickemployemnt}
                 />
-                <label className="input-label" htmlFor={employmentTypeId}>
+                <label
+                  className="input-filter-label"
+                  htmlFor={employmentTypeId}
+                >
                   {label}
                 </label>
               </li>
@@ -47,12 +50,12 @@ const FiltersGroup = props => {
                 <input
                   type="radio"
                   id={salaryRangeId}
-                  className="input-field"
+                  className="input-filter-field"
                   value={salaryRangeId}
                   onChange={onClickSalary}
                   name="salary-filter"
                 />
-                <label className="input-label" htmlFor={salaryRangeId}>
+                <label className="input-filter-label" htmlFor={salaryRangeId}>
                   {label}
                 </label>
               </li>
