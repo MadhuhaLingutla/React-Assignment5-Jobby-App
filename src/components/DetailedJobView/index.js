@@ -1,6 +1,11 @@
 import {Component} from 'react'
+import {Link} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
+import {AiFillStar} from 'react-icons/ai'
+import {IoLocationSharp, IoBagCheck} from 'react-icons/io5'
+import {BiLinkExternal} from 'react-icons/bi'
+
 import Header from '../Header'
 import './index.css'
 
@@ -91,7 +96,122 @@ class DetailedJobView extends Component {
     </div>
   )
 
-  jobDetailsViewDecisionMaker = () => {}
+  jobDetailedView = () => {
+    const {jobDetails} = this.state
+    console.log(jobDetails)
+    const {
+      companyLogoUrl,
+      companyWebsiteUrl,
+      employmentType,
+      id,
+      jobDescription,
+      lifeAtCompanyDescription,
+      lifeAtCompanyImageUrl,
+      location,
+      packagePerAnnum,
+      rating,
+      skills,
+      title,
+    } = jobDetails
+
+    return (
+      <div className="job-detailed-view">
+        <div className="title-container">
+          <img
+            src={companyLogoUrl}
+            alt="company logo"
+            className="jobs-company-logo"
+          />
+          <div className="heading-rating">
+            <h1 className="company-name">{title}</h1>
+            <div className="rating-container">
+              <AiFillStar className="rating-icon" />
+              <p className="rating">{rating}</p>
+            </div>
+          </div>
+        </div>
+        <div className="details-container">
+          <div className="sub-details">
+            <div className="detail1-container">
+              <IoLocationSharp className="detail1-icon" />
+              <p className="detail1-text">{location}</p>
+            </div>
+            <div className="detail1-container">
+              <IoBagCheck className="detail1-icon" />
+              <p className="detail1-text">{employmentType}</p>
+            </div>
+          </div>
+          <p className="salary">{packagePerAnnum}</p>
+        </div>
+        <div className="description-container">
+          <div className="description-heading-container">
+            <p className="description-heading-detailed-view">Description</p>
+            <div className="visit-container">
+              <p className="visit-text">Visit</p>
+              <Link to={companyWebsiteUrl} className="link-item">
+                <BiLinkExternal className="visit-icon" />
+              </Link>
+            </div>
+          </div>
+
+          <p className="description-content in-detailed-view">
+            {jobDescription}
+          </p>
+        </div>
+        <div className="skills-container">
+          <h2 className="skills-heading">Skills</h2>
+          <div className="skills-list">
+            {skills.map(each => {
+              const {imageUrl, name} = each
+              return (
+                <div className="skill">
+                  <img className="skill-image" src={imageUrl} alt={name} />
+                  <p className="skill-name">{name}</p>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+        <div className="life-at-company-container">
+          <h2 className="life-at-company-heading">Life at Company</h2>
+          <div className="life-at-company-details">
+            <p className="life-at-company-description">
+              {lifeAtCompanyDescription}
+            </p>
+            <img
+              className="life-at-company-image"
+              alt="life at company"
+              src={lifeAtCompanyImageUrl}
+            />
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  similarJobsDisplay = () => {
+    const {similarJobDetails} = this.state
+    return <div className="similar-jobs-view">Similar Jobs View View</div>
+  }
+
+  jobDetailsViewDecisionMaker = () => {
+    console.log('Entering into Decision Maker')
+    const {apiStatus} = this.state
+    console.log('Current state is', apiStatus)
+    switch (apiStatus) {
+      case apiStatusList.success:
+        return (
+          <div className="detailed-view-container">
+            {this.jobDetailedView()}
+            {this.similarJobsDisplay()}
+          </div>
+        )
+      case apiStatusList.inProgress:
+        return this.loadingView()
+      default:
+        return null
+    }
+  }
 
   render() {
     return (
