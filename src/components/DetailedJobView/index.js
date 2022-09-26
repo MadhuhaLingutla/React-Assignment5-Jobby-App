@@ -258,7 +258,7 @@ class DetailedJobView extends Component {
         alt="failure view"
         className="failure-image"
       />
-      <h1 className="failure-view-heading">Oops!Something Went Wrong</h1>
+      <h1 className="failure-view-heading">Oops! Something Went Wrong</h1>
       <p className="failure-view-description">
         We cannot seem to find the page you are looking for.
       </p>
@@ -277,6 +277,8 @@ class DetailedJobView extends Component {
     const {apiStatus} = this.state
     console.log('Current state is', apiStatus)
     switch (apiStatus) {
+      case apiStatusList.inProgress:
+        return this.loadingView()
       case apiStatusList.success:
         return (
           <div className="detailed-view-container">
@@ -284,8 +286,6 @@ class DetailedJobView extends Component {
             {this.similarJobsDisplay()}
           </div>
         )
-      case apiStatusList.inProgress:
-        return this.loadingView()
       case apiStatusList.failed:
         return this.jobDetailsFailureView()
       default:
